@@ -1,151 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Working Skills</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS for Circular Progress Bars and Background Image -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('assets/img/hero-bg.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #000000;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Working Skills</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS for Circular Progress Bars and Background Image -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('assets/img/hero-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #000000;
+    }
 
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        .loading-circle {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #f39c12;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin 80s linear infinite; /* Adjust the animation duration here */
-}
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+    .loading-circle {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #f39c12;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
 
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-        .content-container {
-            position: relative;
-            z-index: 1;
-            padding: 50px 0;
-            background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better readability */
-        }
+    .content-container {
+      position: relative;
+      z-index: 1;
+      padding: 50px 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
 
-        .progress-circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: conic-gradient(#007bff var(--progress), #e9ecef 0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: black; /* Set the percentage text color to black */
-            margin: 20px auto;
-            position: relative;
-        }
+    .progress-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: conic-gradient(#007bff var(--progress), #e9ecef 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: black;
+      margin: 20px auto;
+      position: relative;
+    }
 
-        .progress-circle::before {
-            content: attr(data-label);
-            position: absolute;
-            top: 110%;
-            width: 100%;
-            text-align: center;
-            font-size: 1.1rem;
-            color: #fff; /* Change skill label color to white for contrast */
-        }
+    .progress-circle::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 110%;
+      width: 100%;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #fff;
+    }
 
-        .container h1, .container p {
-            color: #fff; /* Set the main heading and paragraph text color to white for better readability */
-            margin-top: 20px;
-        }
+    .container h1, .container p {
+      color: #fff;
+      margin-top: 20px;
+    }
 
-        .schedule-container {
-            text-align: center;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better readability */
-            color: #fff; /* Set the text color to white for better readability */
-        }
+    .schedule-container {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+    }
 
-        .schedule-container h2, .schedule-container p {
-            margin: 10px 0;
-        }
+    .schedule-container h2, .schedule-container p {
+      margin: 10px 0;
+    }
 
-        .schedule-container .btn {
-            margin-top: 20px;
-            color: #fff;
-            border-color: #007bff;
-            background-color: #007bff;
-        }
-    </style>
+    .schedule-container .btn {
+      margin-top: 20px;
+      color: #fff;
+      border-color: #007bff;
+      background-color: #007bff;
+    }
+  </style>
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
 </head>
-<body>
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-circle"></div>
-    </div>
 
+<body>
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-circle"></div>
+  </div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center mx-1 card bg-dark">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/weblogo.png" alt="Logo" style="height: 500px!important;width: auto!important;">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html#about" class="">Home<br></a></li>
+          <li><a href="ht.html">About</a></li>
+          <li><a href="service-details.html">Services</a></li>
+          <li><a href="portfolio-details.html">Portfolio</a></li>
+          <li><a href="starter-page.html">Jobs</a></li>
+          <li class="dropdown"><a href="#"><span>Product</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="product-page.html?id=1">Product 1</a></li>
+              <li class="dropdown"><a href="#"><span>Product 2</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="product-page.html?id=2">New Product</a></li>
+                  <li><a href="product-page.html?id=3">Reused Product</a></li>
+                </ul>
+              </li>
+              <li><a href="product-page.html?id=4">Product 3</a></li>
+              <li><a href="product-page.html?id=5">Product 4</a></li>
+            </ul>
+          </li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="index.html#about">Get Started</a>
+    </div>
+  </header>
+
+  <main class="main">
     <div class="schedule-container">
-        <h2>WANT TO SCHEDULE A DISCUSSION?</h2>
-        <p>Please reach out to us here.</p>
-        <a href="mailto:example@example.com" class="btn btn-primary">EMAIL US</a>
+      <h2>WANT TO SCHEDULE A DISCUSSION?</h2>
+      <p>Please reach out to us here.</p>
+      <a href="mailto:example@example.com" class="btn btn-primary">EMAIL US</a>
     </div>
     <div class="content-container">
-        <div class="container text-center">
-            <h1>OUR WORKING SKILL</h1>
-            <p>Some of predominant areas and working skills are :</p>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="progress-circle" style="--progress: 95%;" data-label="Web Application">
-                        95%
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="progress-circle" style="--progress: 80%;" data-label="Web Design">
-                        80%
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="progress-circle" style="--progress: 60%;" data-label="Mobile Development">
-                        60%
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="progress-circle" style="--progress: 55%;" data-label="Product Development">
-                        55%
-                    </div>
-                </div>
+      <div class="container text-center">
+        <h1>OUR WORKING SKILL</h1>
+        <p>Some of predominant areas and working skills are :</p>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="progress-circle" style="--progress: 95%;" data-label="Web Application">
+              95%
             </div>
+          </div>
+          <div class="col-md-3">
+            <div class="progress-circle" style="--progress: 80%;" data-label="Web Design">
+              80%
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="progress-circle" style="--progress: 60%;" data-label="Mobile Development">
+              60%
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="progress-circle" style="--progress: 55%;" data-label="Product Development">
+              55%
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <span class="sitename">TOSTOT</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>Technology Business Incubator,<br>
+                First Floor, Excellence Building,<br>
+                Thiagarajar Advanced Research Centre,<br>
+                Thiagarajar College of Engineering,<br>
+                Madurai – 625 015,<br>
+                Tamil Nadu, India</p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+91 8778962774</span></p>
+              <p><strong>Email:</strong> <span>office@tostot.com</span></p>
+            </div>
+            <div class="social-links d-flex mt-4">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> About us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Web Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Web Development</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Product Management</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Marketing</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+            <form action="forms/newsletter.php" method="post" class="php-email-form">
+              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        window.addEventListener('load', function() {
-            document.getElementById('loadingOverlay').style.display = 'none';
-        });
-    </script>
+    <div class="copyright">
+      <div class="container text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Tostot Software Solutions Private Limited</strong> <span>All Rights Reserved</span></p>
+        <div class="credits">
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Custom Script for Loading Overlay -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(function() {
+        document.getElementById("loadingOverlay").style.display = "none";
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
